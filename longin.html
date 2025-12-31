@@ -5,41 +5,65 @@
   <title>Login + Unit Calculator</title>
 
   <style>
-    body{
-      font-family: Arial;
-      background:#f2f2f2;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-    }
+  body{
+  font-family: 'Segoe UI', Arial, sans-serif;
 
-    .box{
-      background:white;
-      padding:30px;
-      width:300px;
-      text-align:center;
-      border-radius:10px;
-      box-shadow:0 0 10px rgba(0,0,0,0.2);
-    }
 
-    input{
-      width:90%;
-      padding:10px;
-      margin:10px 0;
-    }
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+   .box{
+  background: rgba(20, 20, 20, 0.85);
+  color: #fff;
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+
+}
+
+
+  input{
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #111;
+  color: #0ff;
+  border: 1px solid #0ff;
+  border-radius: 5px;
+}
+
 
     button{
-      padding:10px 20px;
-      background:green;
-      color:white;
-      border:none;
-      cursor:pointer;
-      border-radius:5px;
-    }
+  padding: 10px 22px;
+  background: #0ff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover{
+  background: #00cccc;
+}
+
 
     #calculatorBox{
-      display:none; /* pehle hide */
+      display:none;
     }
 
     #msg{
@@ -50,9 +74,9 @@
 </head>
 <body>
 
-<!-- 🔐 LOGIN BOX -->
+
 <div class="box" id="loginBox">
-  <h2>Login 🔐</h2>
+  <h2>Login </h2>
   <input type="email" id="email" placeholder="Email">
   <input type="password" id="password" placeholder="Password">
   <button onclick="login()">Login</button>
