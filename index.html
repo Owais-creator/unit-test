@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unit Calculator</title>
+  <style>
+    body{
+      font-family:Arial;
+      background:#f2f2f2;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    .box{
+      background:white;
+      padding:30px;
+      width:300px;
+      text-align:center;
+      border-radius:10px;
+    }
+    input{
+      width:90%;
+      padding:10px;
+      margin:10px 0;
+    }
+    button{
+      padding:10px 20px;
+      background:blue;
+      color:white;
+      border:none;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Unit Bill Calculator ⚡</h2>
+  <input type="number" id="units" placeholder="Enter Units">
+  <button onclick="calculate()">Calculate</button>
+  <h3 id="result"></h3>
+</div>
+
+<script>
+  function calculate(){
+    let units = document.getElementById("units").value;
+    let bill = 0;
+
+    if(units <= 100){
+      bill = units * 10;
+    }else if(units <= 200){
+      bill = (100*10) + (units-100)*15;
+    }else{
+      bill = (100*10) + (100*15) + (units-200)*20;
+    }
+
+    document.getElementById("result").innerText =
+      "Total Bill = Rs " + bill;
+  }
+</script>
+
+</body>
+</html>
+</html>

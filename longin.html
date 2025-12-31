@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login + Unit Calculator</title>
+
+  <style>
+    body{
+      font-family: Arial;
+      background:#f2f2f2;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .box{
+      background:white;
+      padding:30px;
+      width:300px;
+      text-align:center;
+      border-radius:10px;
+      box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+
+    input{
+      width:90%;
+      padding:10px;
+      margin:10px 0;
+    }
+
+    button{
+      padding:10px 20px;
+      background:green;
+      color:white;
+      border:none;
+      cursor:pointer;
+      border-radius:5px;
+    }
+
+    #calculatorBox{
+      display:none; /* pehle hide */
+    }
+
+    #msg{
+      margin-top:10px;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔐 LOGIN BOX -->
+<div class="box" id="loginBox">
+  <h2>Login 🔐</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p id="msg"></p>
+</div>
+
+<!-- ⚡ CALCULATOR BOX -->
+<div class="box" id="calculatorBox">
+  <h2>Unit Bill Calculator ⚡</h2>
+  <input type="number" id="units" placeholder="Enter Units">
+  <button onclick="calculate()">Calculate</button>
+  <h3 id="result"></h3>
+</div>
+
+<script>
+  function login(){
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let correctEmail = "taiowais717@gmail.com";
+    let correctPassword = "12345";
+
+    if(email === correctEmail && password === correctPassword){
+     
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("calculatorBox").style.display = "block";
+    }else{
+      document.getElementById("msg").innerText = "Wrong Email or Password ";
+      document.getElementById("msg").style.color = "red";
+    }
+  }
+
+  function calculate(){
+    let units = document.getElementById("units").value;
+    let bill = 0;
+
+    if(units <= 100){
+      bill = units * 10;
+    }
+    else if(units <= 200){
+      bill = (100*10) + (units-100)*15;
+    }
+    else{
+      bill = (100*10) + (100*15) + (units-200)*20;
+    }
+
+    document.getElementById("result").innerText =
+      "Total Bill = Rs " + bill;
+  }
+</script>
+
+</body>
+</html>
