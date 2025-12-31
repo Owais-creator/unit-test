@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Unit Calculator</title>
 
 <style>
 body{
@@ -45,32 +45,33 @@ button{
   cursor:pointer;
   font-weight:bold;
 }
-
-#msg{ margin-top:10px; }
 </style>
 </head>
 
 <body>
 
 <div class="box">
-  <h2>Login 🔐</h2>
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-  <p id="msg"></p>
+  <h2>Unit Bill Calculator ⚡</h2>
+  <input type="number" id="units" placeholder="Enter Units">
+  <button onclick="calculate()">Calculate</button>
+  <h3 id="result"></h3>
 </div>
 
 <script>
-function login(){
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
+function calculate(){
+  let units = document.getElementById("units").value;
+  let bill = 0;
 
-  if(email === "taiowais717@gmail.com" && password === "12345"){
-    window.location.href = "unit.html"; //
+  if(units <= 100){
+    bill = units * 10;
+  }else if(units <= 200){
+    bill = (100*10) + (units-100)*15;
   }else{
-    document.getElementById("msg").innerText = "Wrong Email or Password ";
-    document.getElementById("msg").style.color = "red";
+    bill = (100*10) + (100*15) + (units-200)*20;
   }
+
+  document.getElementById("result").innerText =
+    "Total Bill = Rs " + bill;
 }
 </script>
 
