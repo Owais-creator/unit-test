@@ -22,7 +22,7 @@ body{
   background: rgba(20,20,20,0.85);
   color:#fff;
   padding:30px;
-  width:320px;
+  width:350px;
   text-align:center;
   border-radius:12px;
   box-shadow:0 0 20px cyan;
@@ -45,6 +45,10 @@ button{
   cursor:pointer;
   font-weight:bold;
 }
+
+h3, p{
+  margin:8px 0;
+}
 </style>
 </head>
 
@@ -55,23 +59,49 @@ button{
   <input type="number" id="units" placeholder="Enter Units">
   <button onclick="calculate()">Calculate</button>
   <h3 id="result"></h3>
+  <p id="perUnit"></p>
+  <p id="percentage"></p>
 </div>
 
 <script>
 function calculate(){
-  let units = document.getElementById("units").value;
-  let bill = 0;
-
-  if(units <= 100){
-    bill = units * 10;
-  }else if(units <= 200){
-    bill = (100*10) + (units-100)*15;
-  }else{
-    bill = (100*10) + (100*15) + (units-200)*20;
+  let units = parseInt(document.getElementById("units").value);
+  if(units <= 0){
+    alert("Please enter valid units!");
+    return;
   }
 
+  let slab1 = 0, slab2 = 0, slab3 = 0, bill = 0;
+
+  // Slab calculation
+  if(units <= 100){
+    slab1 = units * 10;
+  }else if(units <= 200){
+    slab1 = 100 * 10;
+    slab2 = (units - 100) * 15;
+  }else{
+    slab1 = 100 * 10;
+    slab2 = 100 * 15;
+    slab3 = (units - 200) * 20;
+  }
+
+  bill = slab1 + slab2 + slab3;
+
+  // Total bill
   document.getElementById("result").innerText =
     "Total Bill = Rs " + bill;
+
+  // Average per unit
+  let perUnit = (bill / units).toFixed(2);
+  document.getElementById("perUnit").innerText =
+    "Average per Unit = Rs " + perUnit;
+
+  // Percentage contribution of each slab (correct multiply)
+  let perc1 = slab1 > 0 ? ((slab1 / bill) * 100).toFixed(2) : 0;
+  let perc2 = slab2 > 0 ? ((slab2 / bill) * 100).toFixed(2) : 0;
+  let perc3 = slab3 > 0 ? ((slab3 / bill) * 100).toFixed(2) : 0;
+
+ 
 }
 </script>
 
