@@ -87,16 +87,15 @@ function calculate(){
 
   bill = slab1 + slab2 + slab3;
 
-  // Total bill
   document.getElementById("result").innerText =
     "Total Bill = Rs " + bill;
 
-  // Average per unit
+ 
   let perUnit = (bill / units).toFixed(2);
   document.getElementById("perUnit").innerText =
     "Average per Unit = Rs " + perUnit;
 
-  // Percentage contribution of each slab (correct multiply)
+
   let perc1 = slab1 > 0 ? ((slab1 / bill) * 100).toFixed(2) : 0;
   let perc2 = slab2 > 0 ? ((slab2 / bill) * 100).toFixed(2) : 0;
   let perc3 = slab3 > 0 ? ((slab3 / bill) * 100).toFixed(2) : 0;
